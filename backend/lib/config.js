@@ -34,13 +34,13 @@ const configure = () => {
 		logger.info('Using MySQL configuration');
 		instance = {
 			database: {
-				engine:   'mysql',
+				engine:   'mysql2',
 				host:     envMysqlHost,
 				port:     process.env.DB_MYSQL_PORT || 3306,
 				user:     envMysqlUser,
 				password: process.env.DB_MYSQL_PASSWORD,
 				name:     envMysqlName,
-				ssl:      process.env.DB_MYSQL_CA ? { ca: fs.readFileSync(process.env.DB_MYSQL_CA), rejectUnauthorized: false } : false,
+				ssl:      process.env.DB_MYSQL_CA ? { ca: fs.readFileSync(process.env.DB_MYSQL_CA), rejectUnauthorized: true } : false,
 			},
 			keys: getKeys(),
 		};
