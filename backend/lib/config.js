@@ -40,6 +40,7 @@ const configure = () => {
 				user:     envMysqlUser,
 				password: process.env.DB_MYSQL_PASSWORD,
 				name:     envMysqlName,
+				ssl:      process.env.DB_MYSQL_CA ? { ca: fs.readFileSync(process.env.DB_MYSQL_CA), rejectUnauthorized: false } : false,
 			},
 			keys: getKeys(),
 		};
